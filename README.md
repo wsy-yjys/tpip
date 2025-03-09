@@ -194,7 +194,7 @@ tpip unset
 `tpip` is a command-line tool designed specifically for users in **mainland China** to help quickly switch `pip`
 mirrors and improve Python package download speeds. Based on [cnpip](https://github.com/Fenghuapiao/cnpip), it tests the connection speed of various mirrors and **automatically selects the fastest one**.
 
-> **Attention: This Python package is only available in Chinese mainland.**
+
 
 ## Quick Start
 
