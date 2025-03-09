@@ -1,0 +1,2 @@
+[console_scripts]
+tpip = tpip.tpip:main
