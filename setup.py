@@ -1,17 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="cnpip",
-    version="1.2.0",
-    description="""帮助中国用户快速切换 pip 镜像源，提升下载速度的命令行工具
-A tool helps Chinese users quickly switch pip mirrors to improve download speeds.""",
-    author="caoergou",
-    author_email="itsericsmail@gmail.com",
-    url="https://github.com/caoergou/cnpip",
+    name="tpip",
+    version="0.1.0",
+    description="""优选 pip 镜像源，提升下载速度的命令行工具。
+A command line tool that optimizes the pip image source and speeds up downloads.""",
+    author="yjys",
+    author_email="wsy52552@gmail.com",
+    url="https://github.com/wsy-yjys/tpip",
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'cnpip=cnpip.cnpip:main',
+            'tpip=tpip.tpip:main',
         ],
     },
     classifiers=[
@@ -28,9 +28,8 @@ A tool helps Chinese users quickly switch pip mirrors to improve download speeds
         "Topic :: Utilities",
     ],
     install_requires=[
-        "requests"
-    ],
-    extras_require={
-        "async": ["aiohttp"]
-    }
+        "requests",
+        "aiohttp",
+        "prettytable"
+    ]
 )
