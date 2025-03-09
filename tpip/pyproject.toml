@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tpip"
-version = "1.2.0"
+version = "0.1.0"
 authors = [
-    { name = "caoergou", email = "mrjingcheng@foxmail.com" },
+    { name = "yjys", email = "wsy52552@gmail.com" },
 ]
-description = """帮助中国用户快速切换 pip 镜像源，提升下载速度的命令行工具.
-A tool helps Chinese users quickly switch pip mirrors to improve download speeds."""
+description = """优选 pip 镜像源，提升下载速度的命令行工具.
+A command line tool that optimizes the pip image source and speeds up downloads."""
 readme = "README.md"
 requires-python = ">=3.7"
 keywords = ["pip", "mirror", "Chinese", "speed", "cli"]
@@ -31,8 +31,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/caoergou/tpip"
-Issues = "https://github.com/caoergou/tpip/issues"
+Homepage = "https://github.com/wsy-yjys/tpip"
+Issues = "https://github.com/wsy-yjys/tpip/issues"
 
 [project.scripts]
 tpip = "tpip.tpip:main"

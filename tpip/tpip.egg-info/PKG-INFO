@@ -1,12 +1,12 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.2
 Name: tpip
-Version: 1.2.0
-Summary: 帮助中国用户快速切换 pip 镜像源，提升下载速度的命令行工具.
-Home-page: https://github.com/caoergou/tpip
-Author: caoergou
-Author-email: caoergou <mrjingcheng@foxmail.com>
-Project-URL: Homepage, https://github.com/caoergou/tpip
-Project-URL: Issues, https://github.com/caoergou/tpip/issues
+Version: 0.1.0
+Summary: 优选 pip 镜像源，提升下载速度的命令行工具.
+Home-page: https://github.com/wsy-yjys/tpip
+Author: yjys
+Author-email: yjys <wsy52552@gmail.com>
+Project-URL: Homepage, https://github.com/wsy-yjys/tpip
+Project-URL: Issues, https://github.com/wsy-yjys/tpip/issues
 Keywords: pip,mirror,Chinese,speed,cli
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Intended Audience :: Developers
@@ -23,6 +23,11 @@ Classifier: Topic :: System :: Installation/Setup
 Classifier: Topic :: Utilities
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: aiohttp
+Requires-Dist: prettytable
+Dynamic: author
+Dynamic: home-page
 
 # tpip
 

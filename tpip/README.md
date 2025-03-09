@@ -1,8 +1,5 @@
 # tpip
 
-![PyPI](https://img.shields.io/pypi/v/tpip)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/tpip)
-![License](https://img.shields.io/github/license/caoergou/tpip)
 
 `tpip` 是一个帮助你快速切换 `pip` 镜像源，基于cnpip构建，提升 Python 包的下载速度的命令行工具。  
 它可以测试各镜像源的连接速度，并**自动选择最快的镜像源**。
@@ -231,3 +228,6 @@ pip install tpip
 ```bash
 pip install -e .
 ```
+
+
+

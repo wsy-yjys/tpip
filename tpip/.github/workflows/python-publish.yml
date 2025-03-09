@@ -62,8 +62,8 @@ jobs:
         body: |
           # tpip v${{ env.VERSION }}
           
-          帮助中国用户快速切换 pip 镜像源，提升下载速度的命令行工具
-          A tool helps Chinese users quickly switch pip mirrors to improve download speeds.
+          优选 pip 镜像源，提升下载速度的命令行工具
+          A command line tool that optimizes the pip image source and speeds up downloads.
           
           ## 安装方式
           
@@ -73,4 +73,4 @@ jobs:
           
           ## 更新日志
           
-          请查看 [CHANGELOG](https://github.com/caoergou/tpip/blob/main/README.md) 了解详情。
+          请查看 [CHANGELOG](https://github.com/wsy-yjys/tpip/blob/main/README.md) 了解详情。

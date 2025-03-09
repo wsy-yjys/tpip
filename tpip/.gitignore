@@ -1,4 +1,5 @@
-/cnpip.egg-info/
+/.github/
+/tpip.egg-info/
 /build/
 /.venv/
 /dist/
