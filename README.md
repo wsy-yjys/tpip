@@ -1,12 +1,10 @@
 # tpip
 
 
-`tpip` 是一个帮助你快速切换 `pip` 镜像源，基于cnpip构建，提升 Python 包的下载速度的命令行工具。  
+`tpip` 是一个帮助你快速选择最优 `pip` 镜像源的命令行工具，基于[cnpip](https://github.com/Fenghuapiao/cnpip) 构建，提升 Python 包的下载速度。  
 它可以测试各镜像源的实际下载速度，并**自动选择下载速度最快的镜像源**。
 
-## 致谢
 
-本项目基于 [cnpip](https://github.com/Fenghuapiao/cnpip) 项目开发，感谢 cnpip 项目的开发者提供的优秀工具和灵感。tpip 在 cnpip 的基础上进行了功能扩展和优化，为中国用户提供更好的 pip 镜像源管理体验。
 
 ## 快速使用
 
@@ -185,17 +183,16 @@ tpip unset
 
 不会。`tpip` 只会修改或添加 `index-url` 配置项，其他配置项会被保留。
 
-## 许可证
+## 致谢
 
-本项目使用 [MIT 许可证](LICENSE)。
+本项目基于 [cnpip](https://github.com/Fenghuapiao/cnpip) 项目开发，感谢 cnpip 项目的开发者提供的优秀工具和灵感。tpip 在 cnpip 的基础上进行了功能扩展和优化，为中国用户提供更好的 pip 镜像源管理体验。
 
 ---
 
 # tpip (English)
 
 `tpip` is a command-line tool designed specifically for users in **mainland China** to help quickly switch `pip`
-mirrors and improve Python package download speeds.       
-It tests the connection speed of various mirrors and **automatically selects the fastest one**.
+mirrors and improve Python package download speeds. Based on [cnpip](https://github.com/Fenghuapiao/cnpip), it tests the connection speed of various mirrors and **automatically selects the fastest one**.
 
 > **Attention: This Python package is only available in Chinese mainland.**
 
@@ -215,7 +212,6 @@ tpip set
 - **Beautiful table output** using the `prettytable` library
 - **Display package download links** for each mirror
 - **Support for asynchronous testing** to improve efficiency
-- Designed specifically for users in mainland China
 
 ## Installation
 
@@ -228,6 +224,158 @@ pip install tpip
 ```bash
 pip install -e .
 ```
+
+## Supported Mirrors
+
+- [Tsinghua University TUNA](https://pypi.tuna.tsinghua.edu.cn/simple)
+- [University of Science and Technology of China USTC](https://pypi.mirrors.ustc.edu.cn/simple)
+- [Aliyun](https://mirrors.aliyun.com/pypi/simple)
+- [Tencent](https://mirrors.cloud.tencent.com/pypi/simple)
+- [Huawei](https://repo.huaweicloud.com/repository/pypi/simple)
+- [Westlake University](https://mirrors.westlake.edu.cn)
+- [PyPi (Default)](https://pypi.org/simple)
+
+## Usage
+
+### 1. List All Available Mirrors
+
+```bash
+tpip list
+```
+
+Example output:
+
+```
++-------------+-----------+----------------------------------------+
+| Mirror Name | Time(ms)  | URL                                    |
++-------------+-----------+----------------------------------------+
+| ustc        | 135.71    | https://pypi.mirrors.ustc.edu.cn/simple|
+| aliyun      | 300.77    | https://mirrors.aliyun.com/pypi/simple |
+| tuna        | 499.51    | https://pypi.tuna.tsinghua.edu.cn/simple|
+| default     | 1252.75   | https://pypi.org/simple                |
+| tencent     | 1253.07   | https://mirrors.cloud.tencent.com/pypi/simple|
++-------------+-----------+----------------------------------------+
+```
+
+### 2. Test Download Speed for a Specific Package
+
+```bash
+tpip list --package numpy
+```
+
+This will test the download speed of the numpy package from different mirrors and display the download links.
+
+Example output:
+
+```
+Testing download speed for the 3 mirrors with lowest latency, this may take a few minutes...
+
+Package link for ustc: @https://pypi.mirrors.ustc.edu.cn/packages/65/6e/09db2a15a75e9cca1c8a5b89b5d5a6d945b3bc551898b4b8d2c4a08e09b9/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Package link for tuna: @https://pypi.tuna.tsinghua.edu.cn/packages/65/6e/09db2a15a75e9cca1c8a5b89b5d5a6d945b3bc551898b4b8d2c4a08e09b9/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Package link for aliyun: @https://mirrors.aliyun.com/pypi/packages/65/6e/09db2a15a75e9cca1c8a5b89b5d5a6d945b3bc551898b4b8d2c4a08e09b9/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+
+Starting download speed test...
+```
+
+### 3. Automatically Select the Fastest Mirror
+
+```bash
+tpip set
+```
+
+Example output:
+
+```
+No mirror specified, automatically selecting the fastest mirror: ustc
+Successfully set pip mirror to 'https://pypi.mirrors.ustc.edu.cn/simple'
+```
+
+### 4. Select a Specific Mirror
+
+```bash
+tpip set <mirror-name>
+```
+
+Example:
+
+```bash
+tpip set tuna
+```
+
+Output:
+
+```
+Successfully set pip mirror to 'https://pypi.tuna.tsinghua.edu.cn/simple'
+```
+
+### 5. Reset to Default Mirror
+
+```bash
+tpip unset
+```
+
+Output:
+
+```
+Successfully reset pip mirror settings to default.
+```
+
+### 6. Advanced Options
+
+#### Sequential Testing Mode
+
+By default, tpip uses parallel testing mode. For more detailed output, you can use sequential testing mode:
+
+```bash
+tpip list --sequential
+```
+
+#### Specify Test Duration
+
+You can specify the time limit for download testing:
+
+```bash
+tpip list --test-time 10
+```
+
+#### Specify Number of Mirrors to Test
+
+You can specify the number of mirrors to test for download speed:
+
+```bash
+tpip list --top-count 5
+```
+
+## Configuration File
+
+`tpip` modifies or creates the `pip` configuration file to set the mirror:
+
+- **Linux/macOS**: `~/.pip/pip.conf`
+- **Windows**: `%APPDATA%\pip\pip.ini`
+
+When setting a mirror, `tpip` only modifies or adds the `index-url` configuration without overwriting other settings.
+
+## FAQ
+
+### 1. Why Can't I Connect to Some Mirrors?
+
+Some mirrors (like Douban) might be inaccessible due to network issues or problems with the mirror itself. In such cases, `tpip` will show "Unable to connect" and rank them last in the speed test results.
+
+### 2. How to Reset to the Default `pip` Mirror?
+
+Use the `unset` command to restore the default `pip` mirror:
+
+```bash
+tpip unset
+```
+
+### 3. Will `tpip` Overwrite My `pip.conf` File?
+
+No. `tpip` only modifies or adds the `index-url` configuration while preserving other settings.
+
+## Acknowledgments
+
+This project is based on the [cnpip](https://github.com/Fenghuapiao/cnpip) project. We thank the developers of cnpip for providing an excellent tool and inspiration. tpip extends and optimizes the functionality of cnpip to provide a better pip mirror management experience for users in China.
 
 
 
