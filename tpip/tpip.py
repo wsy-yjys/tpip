@@ -258,7 +258,7 @@ async def list_mirrors_async():
             valid_results = [r for r in results if isinstance(r, tuple) and r[1] is not None]
             valid_results.sort(key=lambda x: x[1])
             
-            print_mirror_results(valid_results, "延迟 (ms)")
+            print_mirror_results(valid_results, "耗时 (ms)")
             print(f"异步延迟测试总耗时: {round((time.monotonic() - start_time) * 1000, 2)} ms")
             
             # 检查是否需要跳过下载测试
@@ -514,11 +514,11 @@ def print_mirror_results(results, header_text="测试结果"):
 def print_final_results(results):
     # 使用PrettyTable创建表格
     table = PrettyTable()
-    table.field_names = ["镜像名称", "延迟(ms)", "下载速度(MB/s)", "地址"]
+    table.field_names = ["镜像名称", "耗时(ms)", "下载速度(MB/s)", "地址"]
     
     # 设置列对齐方式
     table.align["镜像名称"] = "l"
-    table.align["延迟(ms)"] = "r"
+    table.align["耗时(ms)"] = "r"
     table.align["下载速度(MB/s)"] = "r"
     table.align["地址"] = "l"
     
